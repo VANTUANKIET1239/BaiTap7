@@ -18,12 +18,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView btnBlack, btnBlue,btnGreen,btnRed,btnCount,screenCor;
+    TextView btnBlack;
+    TextView btnBlue;
+    TextView btnGreen;
+    TextView btnRed;
+    TextView btnCount;
+    static TextView screenCor;
     public static final String SHARE_PRES = "com.example.fillcolorandcount";
-    public static final String count = "count";
-    public static final String COLOR = "kiet";
+   /* public static final String count = "count";
+    public static final String COLOR = "kiet";*/
 
-    private int getcount;
+    private String getcount;
     private String getColor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +69,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 screenCor.setText(String.valueOf(Integer.valueOf(screenCor.getText().toString()) + 1));
-              /*  SaveData();*/
+                /*  SaveData();*/
             }
         });
         /*loadData();
         setview();*/
+        PreferenceManager.setDefaultValues(this,R.xml.root_preferences,false);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        getcount = preferences.getInt("default_count", 0);
+        getcount = preferences.getString("kiettuan", "0");
         getColor = preferences.getString("default_color", "red");
         screenCor.setText(String.valueOf(getcount));
         setColor(getColor);
@@ -79,8 +85,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        // Get the user's selections
+        //   int defaultCount = Integer.parseInt(screenCor.getText().toString());
+        //  String defaultColor = (String)  ;
 
-    private void setColor(String color) {
+        // Save the selections to the preferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("kiettuan", getcount);
+        editor.putString("default_color",getColor);
+
+        editor.apply();
+
+        // Return to the previous activity
+        super.onBackPressed();
+    }
+    public static void setCount(String count) {
+        screenCor.setText(count);
+    }
+    public static void setColor(String color) {
         switch (color) {
             case "black":
                 screenCor.setBackgroundColor(Color.BLACK);
@@ -101,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("default_count", getcount);
+        editor.putString("kiettuan", screenCor.getText().toString());
         editor.putString("default_color", getColor);
         editor.apply();
     }
@@ -113,18 +138,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /*switch (item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }*/
-        Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
-        intent.putExtra("title",item.getTitle());
-        startActivity(intent);
-        return super.onOptionsItemSelected(item);
+        }
     }
    /* public void SaveData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARE_PRES,MODE_PRIVATE);
