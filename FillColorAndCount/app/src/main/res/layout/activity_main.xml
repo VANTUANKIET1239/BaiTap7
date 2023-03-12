@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/screen"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/purple_200"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="100dp"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/btnblack"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background= "@color/black"
+            android:text="Black"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/btnred"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background= "@color/red"
+            android:text="Red"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/btnblue"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background= "@color/blue"
+            android:text="Blue"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+
+            ></TextView>
+        <TextView
+            android:id="@+id/btngreen"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background= "@color/green"
+            android:text="Green"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+
+            ></TextView>
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/btncount"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/cardview_dark_background"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="Count"
+        android:textSize="30dp"
+        ></TextView>
+</LinearLayout>

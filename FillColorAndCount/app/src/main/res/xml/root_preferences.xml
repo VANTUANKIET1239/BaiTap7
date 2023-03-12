@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="default_count"
+        android:title="Default Count"
+        android:defaultValue="0"
+        />
+
+    <ListPreference
+        android:key="default_color"
+        android:title="Default Color"
+        android:entries="@array/color_options"
+        android:entryValues="@array/color_values"
+        android:defaultValue="red"/>
+
+</PreferenceScreen>
